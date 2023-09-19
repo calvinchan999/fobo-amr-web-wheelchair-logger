@@ -51,6 +51,19 @@ cron.schedule("*/30 * * * *", async () => {
   }
 });
 
-app.listen(port, () => {
+function init() {
+  if (!fs.existsSync("./logs")) {
+    fs.mkdir("./logs", (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("logs folder created successfully.");
+      }
+    });
+  }
+}
+
+app.listen(port, async() => {
   console.log(`server starting on port ${port}`);
+  await init();
 });
