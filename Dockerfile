@@ -1,8 +1,7 @@
-FROM node:16
-
+FROM node:16.13.0-alpine
 USER root
 
-RUN apt-get update
+# RUN apt-get update
 
 WORKDIR /usr/src/app
 
